@@ -9,12 +9,13 @@ public class _01_RobotRace {
 	public static void main(String[] args) {
 
 		// 2. create an array of 5 robots.
-		Robot robots[] = new Robot[5];
+		Robot robots[] = new Robot[50];
+		int robotAngles[] = new int[50];
 		// 3. use a for loop to initialize the robots.
 		for (int i = 0; i < robots.length; i++) {
 			robots[i] = new Robot();
-			robots[i].setSpeed(100);
-			robots[i].moveTo(50 + (200 * i), 500);
+			robots[i].setSpeed(1000000);
+			robots[i].moveTo(/*50 + (90 * i)*/200, 300);
 
 		}
 		// 4. make each robot start at the bottom of the screen, side by side, facing up
@@ -29,8 +30,11 @@ public class _01_RobotRace {
 		while (!(raceFinished)) {
 			for (int i = 0; i < robots.length; i++) {
 
-				robots[i].move(r.nextInt(50));
-				if(robots[i].getY() < 20) {
+				robots[i].move(r.nextInt(10));
+				int placeholder = r.nextInt(5);
+				robots[i].turn(placeholder);
+				robotAngles[i] += placeholder;
+				if(robotAngles[i] >= 360) {
 					raceFinished = true;
 					winner = i;
 				}
